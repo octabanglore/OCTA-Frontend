@@ -26,7 +26,7 @@ import Emailsent from "./emailsent";
 import forgotpassword from "@/actions/forgot-password";
 
 const formSchema = z.object({
-  email: z.string().email(),
+  username: z.string().email(),
 });
 
 const ForgotPassword = () => {
@@ -36,7 +36,7 @@ const ForgotPassword = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
+      username: "",
     },
   });
 
@@ -74,16 +74,16 @@ const ForgotPassword = () => {
                 <div className="flex flex-col">
                   <FormField
                     control={form.control}
-                    name="email"
+                    name="username"
                     disabled={loading}
                     render={({ field }) => (
                       <FormItem className="mt-2 mx-8 space-y-0 custom-text-grey600 focus-within:custom-text-secondary-light-1">
-                        <FormLabel className="px-1 custom-n2" htmlFor="email">
+                        <FormLabel className="px-1 custom-n2" htmlFor="username">
                           Email
                         </FormLabel>
                         <FormControl>
                           <Input
-                            id="email"
+                            id="username"
                             className="custom-bg-grey100 custom-text-grey800 custom-b1 custom-input-stlyes focus:custom-border-secondary-light-1 focus:custom-input-stlyes"
                             // placeholder="Enter Email Address..."
                             {...field}

@@ -1,5 +1,5 @@
 export const validationConditions ={
-    length : 10,
+    length : 8,
     specialCharacter : true,
     casing : true,
     number :true
