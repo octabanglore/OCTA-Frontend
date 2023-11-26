@@ -62,7 +62,7 @@ const Login = () => {
       await login(resp)
       router.push("/")
     } catch (error) {
-      console.error('Error during login:',error);
+      console.error('Error during login:',error.response.data.errorMessage);
     } finally{
       setLoading(false)
     }
