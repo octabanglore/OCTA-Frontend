@@ -4,12 +4,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
@@ -24,7 +19,8 @@ import {
 import { AlertCircle, Check, EyeIcon, EyeOff } from "lucide-react";
 import { validationConditions } from "@/actions/reset-password";
 import ResetSucessful from "./ResetSucessful";
-import resetpassword from "@/actions/rest-password";
+import { resetpassword } from "@/actions/reset-password";
+import { useSearchParams } from "next/navigation";
 
 const formSchema = z.object({
   password: z.string().min(1, {
@@ -52,6 +48,9 @@ const ResetPassword = () => {
   });
   const [passwordsNotMatch, setPasswordsNotMatch] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const searchParams = useSearchParams()
+ 
+  const userdetailtoken = searchParams.get('userdetailtoken')
 
   useEffect(() => {
     const validatePassword1 = () => {
@@ -114,6 +113,7 @@ const ResetPassword = () => {
 
   const onSubmit = async (data) => {
     setLoading(true);
+    data={...data, userdetailtoken};
     try {
       const resp = await resetpassword(data);
       setSubmitted((prev) => true);
