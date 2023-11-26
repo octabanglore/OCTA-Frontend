@@ -21,6 +21,7 @@ import { validationConditions } from "@/actions/reset-password";
 import ResetSucessful from "./ResetSucessful";
 import { resetpassword } from "@/actions/reset-password";
 import { useSearchParams } from "next/navigation";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
   password: z.string().min(1, {
@@ -118,7 +119,8 @@ const ResetPassword = () => {
       const resp = await resetpassword(data);
       setSubmitted((prev) => true);
     } catch (error) {
-      console.error("Error during login:", error);
+      toast.error(error.response.data.errorMessage);
+      // console.error("Error during login:", error);
     } finally {
       setLoading(false);
     }

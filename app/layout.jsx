@@ -1,6 +1,7 @@
 import { Kanit, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { ToastProvider } from "@/providers/toast-provider";
 
 const kanit = Kanit({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${kanit.variable} ${kanit.className} ${nunito_sans.variable} custom-bg-grey100 custom-text-grey800`}
       >
+        <ToastProvider />
         <Toaster/>
         {children}
       </body>

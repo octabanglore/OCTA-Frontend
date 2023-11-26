@@ -19,12 +19,12 @@ const Home = () => {
   
 
   if (users.user) {
-    console.log(users);
+    // console.log(users);
     redirect("/homepage");
   }
   
   if (!users.user) {
-    console.log(users);
+    // console.log(users);
     redirect("/login");
   }
 

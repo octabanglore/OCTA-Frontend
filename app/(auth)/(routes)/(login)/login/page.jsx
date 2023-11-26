@@ -25,6 +25,7 @@ import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
 import useLogin from "@/hooks/use-auth";
 import auth from "@/actions/auth";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
   usertype: z.string(),
@@ -38,7 +39,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { toast } = useToast();
+  const { toast2 } = useToast();
   const { login } = useLogin();
 
   const handleTogglePassword = () => {
@@ -62,11 +63,12 @@ const Login = () => {
       await login(resp)
       router.push("/")
     } catch (error) {
-      console.error('Error during login:',error.response.data.errorMessage);
+      toast.error(error.response.data.errorMessage);
+      // console.error('Error during login:',error.response.data.errorMessage);
     } finally{
       setLoading(false)
     }
-    // toast({
+    // toast2({
     //   variant: "error",
     //   // variant: "destructive",
     //   description: " try again.",

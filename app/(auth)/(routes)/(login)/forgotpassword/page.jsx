@@ -24,6 +24,7 @@ import {
 import Link from "next/link";
 import Emailsent from "./emailsent";
 import forgotpassword from "@/actions/forgot-password";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
   username: z.string().email(),
@@ -46,7 +47,8 @@ const ForgotPassword = () => {
       const resp = await forgotpassword(data);
       setSubmitted((prev) => true);
     } catch (error) {
-      console.error("Error during login:", error);
+      toast.error(error.response.data.errorMessage);
+      // console.error("Error during login:", error);
     } finally {
       setLoading(false);
     }
