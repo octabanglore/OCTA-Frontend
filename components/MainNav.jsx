@@ -1,13 +1,8 @@
-import Sidebar from "./components/Sidebar";
 import { Bell, Settings, User } from "lucide-react";
 
-const f1 = () => {
+const MainNav = () => {
   return (
-    <div className="flex">
-      <Sidebar />
-      <card/>
-      
-      <div className="ml-[116px] mb-1 flex-1">
+    <div className="ml-[116px] mb-1 flex-1">
         <div className="custom-bg-grey000 h-12  flex justify-between items-center">
           <div className="custom-bg-grey800 ml-6 custom-text-grey800 flex items-center justify-center">
             Overview
@@ -26,8 +21,7 @@ const f1 = () => {
         </div>
 
       </div>
-    </div>
-  );
-};
+  )
+}
 
-export default f1;
+export default MainNav

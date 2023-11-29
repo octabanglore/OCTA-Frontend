@@ -194,6 +194,12 @@
   .custom-border-grey200 {
     @apply border-[#D2D4DA] !important;
   }
+  .custom-border-r-grey200 {
+    @apply border-r-[#D2D4DA] !important;
+  }
+  .custom-border-b-grey200 {
+    @apply border-b-[#D2D4DA] !important;
+  }
   .custom-input-stlyes {
     @apply rounded-[8px] gap-[10px] py-[10px] pr-[12px] pl-[8px]  !important;
   }
