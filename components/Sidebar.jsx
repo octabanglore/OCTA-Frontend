@@ -1,72 +1,179 @@
 "use client";
-import { BaggageClaim, UserSquare, ChevronLeft, ChevronRight } from "lucide-react";
-import { productCatalogueIcon, purchaseOrderIcon, insightsIcon, inventoryManageIcon, approvalsIcon } from "@/components/svgs/ModulesPage";
+import {
+  BaggageClaim,
+  UserSquare,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import {
+  productCatalogueIcon,
+  purchaseOrderIcon,
+  insightsIcon,
+  inventoryManageIcon,
+  approvalsIcon,
+  sidebarCloseIcon
+} from "@/components/svgs/SidebarIcons";
 import { moduleData } from "@/actions/home-page";
 
 import { useEffect, useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import { usePathname, useRouter } from "next/navigation";
 
-export default function Sidebar(props) {
+export default function Sidebar() {
   const [isLeftOpen, setIsLeftOpen] = useState(false);
   const [isRightOpen, setIsRightOpen] = useState(false);
-  const [active, setActive] = useState("");
   const [isTransitionEnded, setIsTransitionEnded] = useState(false);
-  const pathname = usePathname()
-
+  const pathname = usePathname();
+  const urlTextArray = pathname.split("/");
   const handleLeftOpenClick = () => {
     setIsLeftOpen(!isLeftOpen);
-    setIsTransitionEnded(false); 
+    setIsTransitionEnded(false);
   };
 
   const handleTransitionEnd = () => {
     setIsTransitionEnded(true);
   };
-  // useEffect(()=>{
-  //   setActive(props.active)
-  // },[props.active])
 
   const router = useRouter();
 
   return (
     <div className="flex fixed inset-y-0">
+      {
+        //! left side bar
+      }
       <div
         className={`custom-bg-secondary transition-all duration-300 overflow-y-auto flex flex-col justify-between
-        ${isLeftOpen ? "w-[200px]" : "w-[72px]"}`} onTransitionEnd={handleTransitionEnd}
+        ${isLeftOpen ? "w-[200px]" : "w-[72px]"}`}
+        onTransitionEnd={handleTransitionEnd}
       >
         <div>
-          <div className="custom-text-primary custom-bg-grey000 w-12 h-9 my-6 mx-3 flex place-items-center justify-center rounded-[8px]">
-            O
+          <div className="flex">
+          <div className={`custom-text-primary custom-bg-grey000  h-9 my-6 mx-3 flex place-items-center justify-center rounded-[8px] ${isLeftOpen ? "w-[122px]": "w-12"}`}>
+          {isLeftOpen ? "OCTA": "O"}
           </div>
-          <div className="h-6  flex place-items-center justify-center custom-text-grey000  ">
+          {isLeftOpen && <button className=" self-center pl-4" onClick={handleLeftOpenClick}>{sidebarCloseIcon}</button>}
+          </div>
+          {!isLeftOpen ? <div className="h-6 flex place-items-center justify-center custom-text-grey000  ">
             <button
               className="flex place-items-center justify-center"
               onClick={handleLeftOpenClick}
             >
-            <Separator className="h-[0.5px] w-7 ml-3" />
+              <Separator className="h-[0.5px] w-7 ml-3" />
               <ChevronRight />
             </button>
-          </div>
+          </div>:
+          <Separator/>
+          }
           <div className="custom-text-grey000 flex flex-col place-items-center justify-around py-6 space-y-4">
-            {moduleData.vendorDetails && <button onClick={()=>router.push("/vendordetails")} className={`flex place-items-center justify-center p-2 rounded-full ${pathname=== "/vendordetails" && "bg-red-700"}`}>
-              <UserSquare />
-            </button>}
-            {moduleData.productCatalogue && <button onClick={()=>router.push("/productcatalogue")} className={`flex place-items-center justify-center  p-2 rounded-full ${pathname=== "/productcatalogue" && "bg-red-700"}`}>
-            <UserSquare /> {isLeftOpen && isTransitionEnded && moduleData.productCatalogue.title}
-            </button>}
-            <button onClick={()=>router.push("/purchaseorder")} className={`flex place-items-center justify-center p-2 rounded-full ${pathname=== "/purchaseorder" && "bg-red-700"}`}>
-              <BaggageClaim />
-            </button>
-            <BaggageClaim />
-            <BaggageClaim />
+            
+            {moduleData.vendorDetails && (
+              <button
+                onClick={() => router.push("/vendordetails")}
+                className={`flex place-items-center justify-center  p-2 rounded-full ${
+                  urlTextArray[1] === "vendordetails" && "custom-bg-primary "
+                } ${
+                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                }`}
+              >
+                <UserSquare/>{" "}
+                <div>
+                  {isLeftOpen &&
+                    isTransitionEnded &&
+                    moduleData.vendorDetails.title}
+                </div>
+              </button>
+            )}
+            {moduleData.productCatalogue && (
+              <button
+                onClick={() => router.push("/productcatalogue")}
+                className={`flex place-items-center justify-center  p-2 rounded-full ${
+                  urlTextArray[1] === "productcatalogue" && "custom-bg-primary "
+                } ${
+                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                }`}
+              >
+                <div>{productCatalogueIcon} </div>{" "}
+                <div>
+                  {isLeftOpen &&
+                    isTransitionEnded &&
+                    moduleData.productCatalogue.title}
+                </div>
+              </button>
+            )}
+            {moduleData.purchaseOrder && (
+              <button
+                onClick={() => router.push("/purchaseorder/overview")}
+                className={`flex place-items-center justify-center  p-2 rounded-full ${
+                  urlTextArray[1] === "purchaseorder" && "custom-bg-primary "
+                } ${
+                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                }`}
+              >
+                <div>{purchaseOrderIcon} </div>{" "}
+                <div>
+                  {isLeftOpen &&
+                    isTransitionEnded &&
+                    moduleData.purchaseOrder.title}
+                </div>
+              </button>
+            )}
+            {moduleData.insights && (
+              <button
+                onClick={() => router.push("/insights")}
+                className={`flex place-items-center justify-center  p-2 rounded-full ${
+                  urlTextArray[1] === "insights" && "custom-bg-primary "
+                } ${
+                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                }`}
+              >
+                <div>{insightsIcon} </div>{" "}
+                <div>
+                  {isLeftOpen &&
+                    isTransitionEnded &&
+                    moduleData.insights.title}
+                </div>
+              </button>
+            )}
+            {moduleData.inventoryManage && (
+              <button
+                onClick={() => router.push("/inventorymanage")}
+                className={`flex place-items-center justify-center  p-2 rounded-full ${
+                  urlTextArray[1] === "inventorymanage" && "custom-bg-primary "
+                } ${
+                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                }`}
+              >
+                <div>{inventoryManageIcon} </div>{" "}
+                <div>
+                  {isLeftOpen &&
+                    isTransitionEnded &&
+                    moduleData.inventoryManage.title}
+                </div>
+              </button>
+            )}
+            {moduleData.approvals && (
+              <button
+                onClick={() => router.push("/approvals")}
+                className={`flex place-items-center justify-center  p-2 rounded-full ${
+                  urlTextArray[1] === "approvals" && "custom-bg-primary "
+                } ${
+                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                }`}
+              >
+                <div>{approvalsIcon} </div>{" "}
+                <div>
+                  {isLeftOpen &&
+                    isTransitionEnded &&
+                    moduleData.approvals.title}
+                </div>
+              </button>
+            )}
           </div>
         </div>
 
         <div className=" text-white">
-          <button onClick={() => setIsLeftOpen(!isLeftOpen)}>
-            {pathname}
-          </button>
-          {isLeftOpen && <div className="px-4">Left Links</div>}
+          {/* <button onClick={() => setIsLeftOpen(!isLeftOpen)}>{pathname}</button>
+          {isLeftOpen && <div className="px-4">Left Links</div>} */}
         </div>
       </div>
 

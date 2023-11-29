@@ -1,6 +1,6 @@
 import { UserSquare } from "lucide-react";
 import CardComp from "./CardComp";
-import { productCatalogueIcon, purchaseOrderIcon, insightsIcon, inventoryManageIcon, approvalsIcon } from "@/components/svgs/ModulesPage";
+import { productCatalogueIcon, purchaseOrderIcon, insightsIcon, inventoryManageIcon, approvalsIcon } from "@/components/svgs/ModulesPageIcons";
 
 const BodySection = (props) => {
 

@@ -8,7 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { logoutIcon } from "./svgs/ModulesPage";
+import { logoutIcon } from "./svgs/ModulesPageIcons";
 import {
   Dialog,
   DialogClose,
