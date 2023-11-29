@@ -10,17 +10,16 @@ import {
 } from "@/components/ui/popover";
 import { logoutIcon } from "./svgs/ModulesPageIcons";
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { useEffect, useState } from "react";
 import useTextData from "../hooks/use-getText";
-
 
 const Navbar = (props) => {
   const pathname = usePathname();
@@ -109,33 +108,44 @@ const Navbar = (props) => {
               <User height={24} width={24} />
             </PopoverTrigger>
             <PopoverContent className="mt-5 mr-8 flex flex-col justify-center items-start py-1 px-0 w-[170px] h-20 custom-b2 custom-text-grey800 space-y-2">
-              <div className="flex w-full justify-center border-b-[1px]">
-                <User height={24} width={24} className="mr-2" /> {textData?.modules_manage_profile}
+              <div className="flex w-full justify-center border-b-[1px] hover:custom-text-secondary-light-1">
+                <User height={24} width={24} className="mr-2" />{" "}
+                {textData?.modules_manage_profile}
               </div>
               <div>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <button className="flex justify-center ml-4 ">
-                      <div className="mr-2">{logoutIcon}</div>{textData?.modules_logout}
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <button className="flex justify-center ml-4 hover:custom-text-secondary-light-1">
+                      <div className="mr-2">{logoutIcon}</div>
+                      {textData?.modules_logout}
                     </button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-md rounded-[8px] h-[135px] w-[320px] p-0">
-                    <DialogHeader className="flex justify-center items-center">
-                      <DialogDescription className="custom-b1 px-4 mt-6 custom-text-grey800">
-                      {textData?.modules_logout_confirm}
-                      </DialogDescription>
-                    </DialogHeader>
-                    <DialogFooter className="sm:justify-center justify-center space-x-9 items-center flex-row border-t-[1px] custom-text-grey800">
-                      <DialogClose
+                    {/* <button className="flex justify-center ml-4">
+                      <span className="hover:custom-text-secondary-light-1">
+                        <div className="mr-2">{logoutIcon}</div>
+                        {textData?.modules_logout}
+                      </span>
+                    </button> */}
+                  </AlertDialogTrigger>
+                  <AlertDialogContent className="sm:max-w-md rounded-[8px] h-[135px] w-[320px] p-0">
+                    <AlertDialogHeader className="flex justify-center items-center">
+                      <AlertDialogDescription className="custom-b1 px-4 mt-6 custom-text-grey800">
+                        {textData?.modules_logout_confirm}
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter className="sm:justify-center sm:space-x-0 justify-center items-center flex-row border-t-[1px] custom-text-grey800">
+                      <AlertDialogCancel
                         asChild
-                        className="w-full h-full border-r-[1px]"
+                        className="w-full p-0 hover:bg-white hover:custom-text-secondary-light-1 h-full  custom-b2 rounded-none border-0 mr-0"
                       >
                         <button>{textData?.text_cancel}</button>
-                      </DialogClose>
-                      <button className="w-full h-full">{textData?.text_confirm}</button>
-                    </DialogFooter>
-                  </DialogContent>
-                </Dialog>
+                      </AlertDialogCancel>
+
+                      <button className="w-full h-full hover:custom-text-secondary-light-1 border-l-[1px] custom-b2 m-0">
+                        {textData?.text_confirm}
+                      </button>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
             </PopoverContent>
           </Popover>

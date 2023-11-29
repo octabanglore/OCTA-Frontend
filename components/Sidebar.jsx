@@ -49,7 +49,9 @@ export default function Sidebar() {
         <div>
           <div className="flex">
           <div className={`custom-text-primary custom-bg-grey000  h-9 my-6 mx-3 flex place-items-center justify-center rounded-[8px] ${isLeftOpen ? "w-[122px]": "w-12"}`}>
+            <button onClick={() => router.push("/modules")}>
           {isLeftOpen ? "OCTA": "O"}
+          </button>
           </div>
           {isLeftOpen && <button className=" self-center pl-4" onClick={handleLeftOpenClick}>{sidebarCloseIcon}</button>}
           </div>

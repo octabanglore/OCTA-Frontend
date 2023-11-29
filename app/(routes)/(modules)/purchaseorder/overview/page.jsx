@@ -2,7 +2,7 @@ import MainNav from "@/components/MainNav";
 import Sidebar from "@/components/Sidebar";
 
 
-const f1 = () => {
+const Overview = () => {
   return (
     <div className="flex">
       <Sidebar/>
@@ -12,4 +12,4 @@ const f1 = () => {
   );
 };
 
-export default f1;
+export default Overview;
