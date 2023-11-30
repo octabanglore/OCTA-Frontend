@@ -20,11 +20,15 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useEffect, useState } from "react";
 import useTextData from "../hooks/use-getText";
+import { logOff } from "../actions/auth";
+import useLogin from "@/hooks/use-auth";
+import toast from "react-hot-toast";
 
 const Navbar = (props) => {
   const pathname = usePathname();
   const { textData } = useTextData();
   const [isMounted, setIsMounted] = useState(false);
+  const { logout, user } = useLogin();
 
   useEffect(() => {
     setIsMounted(true);
@@ -33,6 +37,18 @@ const Navbar = (props) => {
   if (!isMounted) {
     return null;
   }
+
+  const logoutUser = async ()=>{
+    try {
+      const resp = await logOff(user);
+      await logout()
+      router.push("/")
+    } catch (error) {
+      toast.error(error.response.data.errorMessage);
+      // console.error('Error during login:',error.response.data.errorMessage);
+    }
+  }
+
   return (
     <div className="custom-bg-secondary w-full h-16  flex justify-between items-center">
       <div className="custom-bg-grey000 h-8 w-[122px] m-[16px_48px] rounded-lg custom-bg-primary flex items-center justify-center">
@@ -119,12 +135,6 @@ const Navbar = (props) => {
                       <div className="mr-2">{logoutIcon}</div>
                       {textData?.modules_logout}
                     </button>
-                    {/* <button className="flex justify-center ml-4">
-                      <span className="hover:custom-text-secondary-light-1">
-                        <div className="mr-2">{logoutIcon}</div>
-                        {textData?.modules_logout}
-                      </span>
-                    </button> */}
                   </AlertDialogTrigger>
                   <AlertDialogContent className="sm:max-w-md rounded-[8px] h-[135px] w-[320px] p-0">
                     <AlertDialogHeader className="flex justify-center items-center">
@@ -140,7 +150,7 @@ const Navbar = (props) => {
                         <button>{textData?.text_cancel}</button>
                       </AlertDialogCancel>
 
-                      <button className="w-full h-full hover:custom-text-secondary-light-1 border-l-[1px] custom-b2 m-0">
+                      <button className="w-full h-full hover:custom-text-secondary-light-1 border-l-[1px] custom-b2 m-0" onClick={logoutUser}>
                         {textData?.text_confirm}
                       </button>
                     </AlertDialogFooter>
