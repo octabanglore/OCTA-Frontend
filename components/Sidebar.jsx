@@ -11,13 +11,29 @@ import {
   insightsIcon,
   inventoryManageIcon,
   approvalsIcon,
-  sidebarCloseIcon
+  sidebarCloseIcon,
 } from "@/components/svgs/SidebarIcons";
 import { moduleData } from "@/actions/home-page";
 
 import { useEffect, useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import { usePathname, useRouter } from "next/navigation";
+import { rightSidebarData } from "../actions/sidebar-data";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import * as icons from "./svgs/PurchaseOrderIcons";
+// import { CostApprovalsIcon, DeliveryUpdateIcon, PaymentUpdateIcon, ViewNewOrderIcon } from "./svgs/PurchaseOrderIcons";
+
+const reportIcons = {
+  23: icons.ViewNewOrderIcon,
+  24: icons.CostApprovalsIcon,
+  26: icons.DeliveryUpdateIcon,
+  27: icons.PaymentUpdateIcon,
+};
 
 export default function Sidebar() {
   const [isLeftOpen, setIsLeftOpen] = useState(false);
@@ -37,7 +53,7 @@ export default function Sidebar() {
   const router = useRouter();
 
   return (
-    <div className="flex fixed inset-y-0">
+    <div className="flex fixed z-[1] inset-y-0">
       {
         //! left side bar
       }
@@ -48,36 +64,50 @@ export default function Sidebar() {
       >
         <div>
           <div className="flex">
-          <div className={`custom-text-primary custom-bg-grey000  h-9 my-6 mx-3 flex place-items-center justify-center rounded-[8px] ${isLeftOpen ? "w-[122px]": "w-12"}`}>
-            <button onClick={() => router.push("/modules")}>
-          {isLeftOpen ? "OCTA": "O"}
-          </button>
-          </div>
-          {isLeftOpen && <button className=" self-center pl-4" onClick={handleLeftOpenClick}>{sidebarCloseIcon}</button>}
-          </div>
-          {!isLeftOpen ? <div className="h-6 flex place-items-center justify-center custom-text-grey000  ">
-            <button
-              className="flex place-items-center justify-center"
-              onClick={handleLeftOpenClick}
+            <div
+              className={`custom-text-primary custom-bg-grey000  h-9 my-6 mx-3 flex place-items-center justify-center rounded-[8px] ${
+                isLeftOpen ? "w-[122px]" : "w-12"
+              }`}
             >
-              <Separator className="h-[0.5px] w-7 ml-3" />
-              <ChevronRight />
-            </button>
-          </div>:
-          <Separator/>
-          }
+              <button onClick={() => router.push("/modules")}>
+                {isLeftOpen ? "OCTA" : "O"}
+              </button>
+            </div>
+            {isLeftOpen && (
+              <button
+                className=" self-center pl-4"
+                onClick={handleLeftOpenClick}
+              >
+                {sidebarCloseIcon}
+              </button>
+            )}
+          </div>
+          {!isLeftOpen ? (
+            <div className="h-6 flex place-items-center justify-center custom-text-grey000  ">
+              <button
+                className="flex place-items-center justify-center"
+                onClick={handleLeftOpenClick}
+              >
+                <Separator className="h-[0.5px] w-7 ml-3" />
+                <ChevronRight />
+              </button>
+            </div>
+          ) : (
+            <Separator />
+          )}
           <div className="custom-text-grey000 flex flex-col place-items-center justify-around py-6 space-y-4">
-            
             {moduleData.vendorDetails && (
               <button
                 onClick={() => router.push("/vendordetails")}
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
                   urlTextArray[1] === "vendordetails" && "custom-bg-primary "
                 } ${
-                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                  isLeftOpen &&
+                  isTransitionEnded &&
+                  "rounded-[16px] space-x-2 self-start ml-3"
                 }`}
               >
-                <UserSquare/>{" "}
+                <UserSquare />{" "}
                 <div>
                   {isLeftOpen &&
                     isTransitionEnded &&
@@ -91,7 +121,9 @@ export default function Sidebar() {
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
                   urlTextArray[1] === "productcatalogue" && "custom-bg-primary "
                 } ${
-                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                  isLeftOpen &&
+                  isTransitionEnded &&
+                  "rounded-[16px] space-x-2 self-start ml-3"
                 }`}
               >
                 <div>{productCatalogueIcon} </div>{" "}
@@ -108,7 +140,9 @@ export default function Sidebar() {
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
                   urlTextArray[1] === "purchaseorder" && "custom-bg-primary "
                 } ${
-                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                  isLeftOpen &&
+                  isTransitionEnded &&
+                  "rounded-[16px] space-x-2 self-start ml-3"
                 }`}
               >
                 <div>{purchaseOrderIcon} </div>{" "}
@@ -125,14 +159,14 @@ export default function Sidebar() {
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
                   urlTextArray[1] === "insights" && "custom-bg-primary "
                 } ${
-                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                  isLeftOpen &&
+                  isTransitionEnded &&
+                  "rounded-[16px] space-x-2 self-start ml-3"
                 }`}
               >
                 <div>{insightsIcon} </div>{" "}
                 <div>
-                  {isLeftOpen &&
-                    isTransitionEnded &&
-                    moduleData.insights.title}
+                  {isLeftOpen && isTransitionEnded && moduleData.insights.title}
                 </div>
               </button>
             )}
@@ -142,7 +176,9 @@ export default function Sidebar() {
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
                   urlTextArray[1] === "inventorymanage" && "custom-bg-primary "
                 } ${
-                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                  isLeftOpen &&
+                  isTransitionEnded &&
+                  "rounded-[16px] space-x-2 self-start ml-3"
                 }`}
               >
                 <div>{inventoryManageIcon} </div>{" "}
@@ -159,7 +195,9 @@ export default function Sidebar() {
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
                   urlTextArray[1] === "approvals" && "custom-bg-primary "
                 } ${
-                  isLeftOpen && isTransitionEnded && "rounded-[16px] space-x-2 self-start ml-3"
+                  isLeftOpen &&
+                  isTransitionEnded &&
+                  "rounded-[16px] space-x-2 self-start ml-3"
                 }`}
               >
                 <div>{approvalsIcon} </div>{" "}
@@ -185,7 +223,7 @@ export default function Sidebar() {
 
       <div
         className={` custom-bg-grey100 custom-border-r-grey200 border-[1px] relative transition-all duration-500 ml-auto
-        ${isRightOpen ? "w-[200px]" : "w-[40px]"}`}
+        ${isRightOpen ? "w-[228px]" : "w-[40px]"}`}
       >
         {!isRightOpen && (
           <div className="absolute inset-y-0 right-1/2 ml-px">
@@ -204,14 +242,63 @@ export default function Sidebar() {
           </div>
         )}
         {isRightOpen && (
-          <div className=" flex justify-end ">
-            <div className="custom-bg-grey200 rounded-full custom-text-grey800 mt-5 mr-4 h-6 w-6">
+          <div className=" flex flex-col ">
+            <div className="custom-bg-grey200 self-end rounded-full custom-text-grey800 mt-5 mr-4 h-6 w-6">
               <button
                 className="hover:custom-bg-grey100 rounded-full"
                 onClick={() => setIsRightOpen(!isRightOpen)}
               >
                 <ChevronLeft />
               </button>
+            </div>
+            <div className="mt-[42px] ml-8">
+              <div className="custom-text-primary-light-1 custom-h6">
+                {rightSidebarData.micon}
+                {rightSidebarData.moduleName}
+              </div>
+              <div className="mt-8 custom-b2 pl-4 custom-text-grey800">
+                <div>Overview</div>
+                {rightSidebarData.groups.map((group) => (
+                  <Accordion type="single" collapsible key={group.groupid}>
+                    <AccordionItem
+                      value={group.groupid}
+                      className="border-b-transparent w-[150px] "
+                    >
+                      <AccordionTrigger className=" pb-0 ">
+                        {group.groupName}
+                      </AccordionTrigger>
+                      {group.reports.map((report) => (
+                        <AccordionContent
+                          className="pt-4 pb-0 custom-b2 custom-text-grey600 flex items-center"
+                          key={report.reportId}
+                        >
+                          {/* {report.reportId === "23" && (
+                            <span className="mr-1">
+                              {<BadgeAlert className="h-4 w-4" />}
+                            </span>
+                          )}
+                          {report.reportId === "24" && (
+                            <span className="mr-1">
+                              {<Tag className="h-4 w-4" />}
+                            </span>
+                          )}
+                          {report.reportId === "26" && (
+                            <span className="mr-1">
+                              {<PackageCheck className="h-4 w-4" />}
+                            </span>
+                          )} */}
+                          {
+                            <span className="mr-1 h-4 w-4">
+                              {icons[report.ic]}
+                            </span>
+                          }
+                          {report.reportName}
+                        </AccordionContent>
+                      ))}
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
             </div>
           </div>
         )}

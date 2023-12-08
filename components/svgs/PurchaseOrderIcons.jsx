@@ -1,3 +1,5 @@
+import { BadgeAlert, DollarSign, PackageCheck, Tag } from "lucide-react";
+
 export const ViewPOIcon = (
   <svg
     width="24"
@@ -38,3 +40,10 @@ export const OpenOrderIcon = (
     />
   </svg>
 );
+
+export const PaymentUpdateIcon = <DollarSign className="h-4 w-4" />;
+
+export const ViewNewOrderIcon = <BadgeAlert className="h-4 w-4" />;
+export const DeliveryUpdateIcon = <PackageCheck className="h-4 w-4" />;
+export const CostApprovalsIcon = <Tag className="h-4 w-4" />;
+
