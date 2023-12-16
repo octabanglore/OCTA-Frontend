@@ -1,0 +1,51 @@
+.ag-theme-quartz {
+  --ag-header-height: 64px;
+  --ag-header-foreground-color: #0a68a8;
+  --ag-header-background-color: #fefeff;
+  --ag-border-color: transparent;
+  --ag-shadow-color: transparent;
+  --ag-row-height: 64px;
+  --ag-foreground-color: #282a3a;
+
+}
+.ag-row-even {
+  background-color: #f3f4f8;
+}
+
+.ag-cell.ag-column-first {
+  color: #BF5700
+}
+
+
+.ag-theme-quartz .ag-header {
+  font-weight: normal;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  border: 1px solid #d2d4da;
+}
+
+.ag-header-cell:nth-last-child(2) {
+  --ag-header-column-resize-handle-height: 50%;
+  --ag-header-column-resize-handle-display: block;
+  --ag-header-column-resize-handle-width: 1px;
+  --ag-header-column-resize-handle-color: #d2d4da;
+}
+.ag-cell:nth-last-child(2) {
+  --ag-cell-resize-handle-height: 50%;
+  --ag-cell-resize-handle-display: block;
+  --ag-cell-resize-handle-width: 1px;
+  --ag-cell-resize-handle-color: #d2d4da;
+}
+
+.ag-cell:nth-last-child(2) {
+  position: relative;  
+}
+
+.ag-cell:nth-last-child(2)::after {
+  content: '';
+  position: absolute;
+  top: 25%; 
+  height: 50%;
+  right: 0;
+  border-right: 1px solid #d2d4da;
+}

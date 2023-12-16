@@ -26,14 +26,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import * as icons from "./svgs/PurchaseOrderIcons";
-// import { CostApprovalsIcon, DeliveryUpdateIcon, PaymentUpdateIcon, ViewNewOrderIcon } from "./svgs/PurchaseOrderIcons";
 
-const reportIcons = {
-  23: icons.ViewNewOrderIcon,
-  24: icons.CostApprovalsIcon,
-  26: icons.DeliveryUpdateIcon,
-  27: icons.PaymentUpdateIcon,
-};
 
 export default function Sidebar() {
   const [isLeftOpen, setIsLeftOpen] = useState(false);

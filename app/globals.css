@@ -158,6 +158,9 @@
   .custom-bg-grey200 {
     @apply bg-[#D2D4DA] !important;
   }
+  .custom-bg-grey300 {
+    @apply bg-[#B3B5BD] !important;
+  }
   .custom-text-grey000 {
     @apply text-[#FEFEFF] !important;
   }
@@ -191,6 +194,9 @@
   .custom-border-primary {
     @apply border-[#0A68A8] !important;
   }
+  .custom-border-grey600 {
+    @apply border-[#5B5D6B] !important;
+  }
   .custom-border-grey200 {
     @apply border-[#D2D4DA] !important;
   }
@@ -203,4 +209,7 @@
   .custom-input-stlyes {
     @apply rounded-[8px] gap-[10px] py-[10px] pr-[12px] pl-[8px]  !important;
   }
+  /* .ag-theme-quartz .ag-header {
+    @apply bg-[] text-[#] font-bold;
+  } */
 }
