@@ -1,4 +1,4 @@
-export const getCardsData = () => {
+export const getCardsData = (user) => {
   const cardData = {
     groups: [
       {
