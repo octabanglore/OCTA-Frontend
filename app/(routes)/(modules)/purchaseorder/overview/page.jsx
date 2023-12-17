@@ -14,6 +14,7 @@ import { getCardsData } from "../../../../../actions/purchase-order";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import useLogin from "@/hooks/use-auth";
+import { Kpi } from "@/components/svgs/Demo";
 
 const Overview = () => {
   const [cardsData, setCardsData] = useState({});
@@ -44,13 +45,13 @@ const Overview = () => {
           <div>View Purchase Orders</div>
           <ChevronRight />
         </div>
-       {cardsData.groups && <div className={`mt-2 ml-14 h-[256px] w-[824px] flex justify-start`}>
+       {cardsData.groups && <div className={`mt-2 ml-14 h-[256px]  flex justify-start`}>
           {cardsData.groups.map((group) => (
             <Card
               className="w-[232px] custom-border-grey200 ml-16"
               key={group.groupid}
             >
-              <CardHeader className="py-6 pr-0 pl-4">
+              <CardHeader className="py-6 w-full pr-0 pl-4">
                 <CardTitle className="custom-s1 custom-text-primary flex items-center space-x-2">
                   <div className="w-10 h-10 flex justify-center items-center custom-bg-grey100">
                     {Icons[group.groupIcon]}
@@ -76,14 +77,16 @@ const Overview = () => {
           ))}
         </div>}
       </div>
-      <div className="w-full h-[360px] custom-bg-grey000 custom-text-grey800 flex flex-col">
+      {/* <div className="w-full h-[360px] custom-bg-grey000 custom-text-grey800 flex flex-col">
         <div className="m-6 flex custom-s2 space-x-2">
           {" "}
           <div>{Icons["viewPOIcon"]}</div>
           <div>Key Performance Indicators</div>
           <ChevronRight />
         </div>
-      </div>
+        ge
+      </div> */}
+      <div>{Kpi}</div>
     </>
   );
 };
