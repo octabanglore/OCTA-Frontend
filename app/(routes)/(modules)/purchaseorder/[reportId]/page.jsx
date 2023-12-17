@@ -43,6 +43,64 @@ const AgGridComponent = ({ params }) => {
   const [columns, setColumns] = useState([]);
   const [rowsLength, setRowsLength] = useState(0);
 
+  const users = useLogin();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    fetchData(params.reportId, users.user).then((data) => {
+      setColumns(data?.columnDefs);
+      setRowData(data?.rowData);
+      setRowsLength(data?.rowData.length);
+    });
+  }, [params.reportId, users.user]);
+
+  useEffect(() => {
+     if (gridRef.current?.api && columns.length > 0) {
+      gridRef.current.api.sizeColumnsToFit();
+    }
+  }, [columns]);
+  
+  const onFilterTextBoxChanged = useCallback(() => {
+    gridRef.current.api.setGridOption(
+      "quickFilterText",
+      document.getElementById("filter-text-box").value
+    );
+  }, []);
+  if (!isMounted) {
+    return null;
+  }
+
+  const onSelectionChanged = (params) => {
+    const selectedGridRows = params.api.getSelectedRows();
+    const ids = selectedGridRows.map((item) => item.po_id);
+    setSelectedRows(ids);
+  };
+
+  const valueGetter = (params) => params.value;
+
+  function cellRenderer(props) {
+    return <div>{props.value}</div>;
+  }
+  const hanldeExportFile = async (type) => {
+    try {
+      await exportFileApi(type, params.reportId, users.user);
+      console.log(selectedRows.length);
+    } catch (error) {
+      console.log(error.response.data.errorMessage);
+    }
+  };
+  const hanldeDownloadFile = async (type) => {
+    try {
+      await downloadFileApi(type, selectedRows, users.user);
+    } catch (error) {
+      console.log(error.response.data.errorMessage);
+    }
+  };
+
   const toggleColumnVisibility = (field) => {
     setColumns((prevColumns) =>
       prevColumns.map((column) =>
@@ -68,66 +126,6 @@ const AgGridComponent = ({ params }) => {
     params.api.sizeColumnsToFit();
   };
 
-  const users = useLogin();
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    fetchData(params.reportId, users.user).then((data) => {
-      setColumns(data?.columnDefs);
-      setRowData(data?.rowData);
-      setRowsLength(data?.rowData.length);
-    });
-  }, [params.reportId, users.user]);
-
-  useEffect(() => {
-    if (columns.length > 0) {
-      gridRef.current.api.sizeColumnsToFit();
-    }
-  }, [columns]);
-
-  const onSelectionChanged = (params) => {
-    const selectedGridRows = params.api.getSelectedRows();
-    const ids = selectedGridRows.map(item => item.po_id);
-    setSelectedRows(ids)
-  };
-
-  const onFilterTextBoxChanged = useCallback(() => {
-    gridRef.current.api.setGridOption(
-      "quickFilterText",
-      document.getElementById("filter-text-box").value
-    );
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
-
-  const valueGetter = (params) => params.value;
-
-  function cellRenderer(props) {
-    return <div>{props.value}</div>;
-  }
-  const hanldeExportFile=async (type)=>{
-    try {
-      await exportFileApi(type, params.reportId, users.user)
-      console.log(selectedRows.length);
-    } catch (error) {
-      console.log(error.response.data.errorMessage);
-    }
-  }
-  const hanldeDownloadFile=async (type)=>{
-    try {
-      await downloadFileApi(type, selectedRows, users.user)
-    } catch (error) {
-      console.log(error.response.data.errorMessage);
-    }
-  }
-
-
   return (
     <div className="custom-bg-grey000 pb-8">
       <div className="flex justify-between ml-5 pt-3 mr-8">
@@ -152,15 +150,45 @@ const AgGridComponent = ({ params }) => {
         <div className="flex space-x-6 h-10 custom-b1">
           {/* <Button>Generate Invoice</Button> */}
           <Popover className="custom-border-primary">
-            <PopoverTrigger className={`w-[170px] custom-bg-grey600 custom-b1 p-2 border-[0.5px] rounded flex justify-center items-center hover:custom-bg-grey100 ${selectedRows.length === 0 ? 'custom-bg-grey300 ' : ''}`} disabled={selectedRows.length === 0} >
+            <PopoverTrigger
+              className={`w-[170px] custom-bg-grey600 custom-b1 p-2 border-[0.5px] rounded flex justify-center items-center hover:custom-bg-grey100 ${
+                selectedRows.length === 0 ? "custom-bg-grey300 " : ""
+              }`}
+              disabled={selectedRows.length === 0}
+            >
               Download File <ChevronDown className="ml-2" />{" "}
             </PopoverTrigger>
             <PopoverContent className="w-[152px] custom-s1 px-0 py-2 ">
-              <button className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100" onClick={()=>hanldeDownloadFile("pdf")}>.PDF</button>
-              <button className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100" onClick={()=>hanldeDownloadFile("xls")}>.XlS</button>
-              <button className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100" onClick={()=>hanldeDownloadFile("csv")}>.CSV</button>
-              <button className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100" onClick={()=>hanldeDownloadFile("xml")}>.XML</button>
-              <button className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100" onClick={()=>hanldeDownloadFile("html")}>.HTML</button>
+              <button
+                className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100"
+                onClick={() => hanldeDownloadFile("pdf")}
+              >
+                .PDF
+              </button>
+              <button
+                className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100"
+                onClick={() => hanldeDownloadFile("xls")}
+              >
+                .XlS
+              </button>
+              <button
+                className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100"
+                onClick={() => hanldeDownloadFile("csv")}
+              >
+                .CSV
+              </button>
+              <button
+                className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100"
+                onClick={() => hanldeDownloadFile("xml")}
+              >
+                .XML
+              </button>
+              <button
+                className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100"
+                onClick={() => hanldeDownloadFile("html")}
+              >
+                .HTML
+              </button>
             </PopoverContent>
           </Popover>
           <Popover>
@@ -168,9 +196,24 @@ const AgGridComponent = ({ params }) => {
               Export File <ChevronDown className="ml-2" />{" "}
             </PopoverTrigger>
             <PopoverContent className="w-[152px] custom-s1 px-0 py-2 ">
-              <button className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100" onClick={()=>hanldeExportFile("pdf")}>.PDF</button>
-              <button className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100" onClick={()=>hanldeExportFile("xls")}>.XlS</button>
-              <button className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100" onClick={()=>hanldeExportFile("jpeg")}>.JPEG</button>
+              <button
+                className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100"
+                onClick={() => hanldeExportFile("pdf")}
+              >
+                .PDF
+              </button>
+              <button
+                className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100"
+                onClick={() => hanldeExportFile("xls")}
+              >
+                .XlS
+              </button>
+              <button
+                className="w-full custom-border-b-grey200 px-4 py-2 border-b-[0.5px] text-left hover:custom-bg-grey100"
+                onClick={() => hanldeExportFile("jpeg")}
+              >
+                .JPEG
+              </button>
             </PopoverContent>
           </Popover>
         </div>
