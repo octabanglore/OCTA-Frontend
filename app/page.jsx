@@ -20,7 +20,7 @@ const Home = () => {
 
   if (users.user) {
     // console.log(users);
-    redirect("/homepage");
+    redirect("/modules");
   }
   
   if (!users.user) {
