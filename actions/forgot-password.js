@@ -7,7 +7,7 @@ var customConfig = {
 const forgotpassword = async (data) => {
   let formdata = JSON.stringify(data);
   const response = await axios.post(
-    "http://localhost:8080/api/v1/authenticate/userresetpasswordrequest",
+    `${process.env.API_BASE_URL}/api/v1/authenticate/userresetpasswordrequest`,
     formdata,
     customConfig
   );

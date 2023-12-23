@@ -17,7 +17,7 @@ export const resetpassword = async (data) => {
   let formdata = JSON.stringify(data);
 //   console.log("form data {} ", formdata);
   const response = await axios.post(
-    "http://localhost:8080/api/v1/authenticate/userresetpassword",
+    `${process.env.API_BASE_URL}/api/v1/authenticate/userresetpassword`,
     formdata,
     customConfig
   );

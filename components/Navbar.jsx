@@ -3,6 +3,7 @@
 import { Bell, Settings, User } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+ import { useRouter } from "next/navigation";
 import {
   Popover,
   PopoverContent,
@@ -29,7 +30,7 @@ const Navbar = (props) => {
   const { textData } = useTextData();
   const [isMounted, setIsMounted] = useState(false);
   const { logout, user } = useLogin();
-
+  const router = useRouter();
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -44,7 +45,8 @@ const Navbar = (props) => {
       await logout()
       router.push("/")
     } catch (error) {
-      toast.error(error.response.data.errorMessage);
+      toast.error("Unable to preoceed");
+     // toast.error(error.response.data.errorMessage);
       // console.error('Error during login:',error.response.data.errorMessage);
     }
   }
