@@ -16,6 +16,16 @@ export const getCardsData = (user) => {
             reportName: "Cost Approvals",
             reportIcon: "costApprovalsIcon",
           },
+          {
+            reportId: "22",
+            reportName: "Schedule Delivery",
+            reportIcon: "scheduleDeliveryIcon",
+          },
+          {
+            reportId: "25",
+            reportName: "Generate ASN",
+            reportIcon: "generateASNIcon",
+          },
         ],
       },
       {
@@ -29,7 +39,34 @@ export const getCardsData = (user) => {
             reportIcon: "deliveryUpdateIcon",
           },
           {
+            reportId: "28",
+            reportName: "Generate Invoice",
+            reportIcon: "generateInvoiceIcon",
+          },
+          {
             reportId: "27",
+            reportName: "Payment Update",
+            reportIcon: "paymentUpdateIcon",
+          },
+        ],
+      },
+      {
+        groupid: "14",
+        groupName: "Fulfilled Orders",
+        groupIcon: "fulfilledOrdersIcon",
+        reports: [
+          {
+            reportId: "29",
+            reportName: "Review Costs",
+            reportIcon: "costApprovalsIcon",
+          },
+          {
+            reportId: "30",
+            reportName: "Schedule Deliveries",
+            reportIcon: "scheduleDeliveryIcon",
+          },
+          {
+            reportId: "31",
             reportName: "Payment Update",
             reportIcon: "paymentUpdateIcon",
           },
