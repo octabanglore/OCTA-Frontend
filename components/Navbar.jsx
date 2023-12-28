@@ -53,7 +53,7 @@ const Navbar = (props) => {
 
   return (
     <div className="bg-customSecondary w-full h-16  flex justify-between items-center">
-      <div className="bg-customGrey000 h-8 w-[122px] m-[16px_48px] rounded-lg bg-customPrimary flex items-center justify-center">
+      <div className="bg-customGrey000 h-8 w-[122px] m-[16px_48px] rounded-lg  flex items-center justify-center">
         Octa
       </div>
       <div className="custom-s1 text-customGrey100 flex justify-between items-center space-x-10 h-full ">
