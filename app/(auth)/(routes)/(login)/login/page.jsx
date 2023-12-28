@@ -103,15 +103,15 @@ const Login = () => {
                             id="retailer"
                             className={` ${
                               field.value === "retailer"
-                                ? " custom-text-primary hover:cursor-default"
-                                : "custom-text-grey800 hover:cursor-pointer"
+                                ? " text-customPrimary hover:cursor-default"
+                                : "text-customGrey800 hover:cursor-pointer"
                             } custom-b1`}
                           />
                           <Label
                             className={`ml-1 ${
                               field.value === "retailer"
-                                ? "custom-text-primary"
-                                : "custom-text-grey800 hover:cursor-pointer"
+                                ? "text-customPrimary"
+                                : "text-customGrey800 hover:cursor-pointer"
                             } custom-b1`}
                             htmlFor="retailer"
                           >
@@ -124,15 +124,15 @@ const Login = () => {
                             id="supplier"
                             className={`${
                               field.value === "supplier"
-                                ? " custom-text-primary hover:cursor-default"
-                                : "custom-text-grey800 hover:cursor-pointer"
+                                ? " text-customPrimary hover:cursor-default"
+                                : "text-customGrey800 hover:cursor-pointer"
                             } custom-b1`}
                           />
                           <Label
                             className={`ml-1 ${
                               field.value === "supplier"
-                                ? "custom-text-primary"
-                                : "custom-text-grey800 hover:cursor-pointer"
+                                ? "text-customPrimary"
+                                : "text-customGrey800 hover:cursor-pointer"
                             } custom-b1`}
                             htmlFor="supplier"
                           >
@@ -145,13 +145,13 @@ const Login = () => {
                   </FormItem>
                 )}
               />
-              <Separator className="mt-4 self-center custom-bg-grey100 w-8/12" />
+              <Separator className="mt-4 self-center bg-customGrey100 w-8/12" />
               <FormField
                 control={form.control}
                 disabled ={loading}
                 name="email"
                 render={({ field }) => (
-                  <FormItem className="mt-8 mx-8 space-y-0 custom-text-grey600 focus-within:custom-text-secondary-light-1">
+                  <FormItem className="mt-8 mx-8 space-y-0 text-customGrey600 focus-within:text-customSecondaryLight1">
                     <FormLabel className="px-1 custom-n2" htmlFor="email">
                       Email
                     </FormLabel>
@@ -159,7 +159,7 @@ const Login = () => {
                       <Input
                         id="email"
                         disabled={loading}
-                        className="custom-bg-grey100 custom-text-grey800 custom-b1 custom-input-stlyes focus:custom-border-secondary-light-1 focus:custom-input-stlyes"
+                        className="bg-customGrey100 text-customGrey800 custom-b1 custom-input-stlyes focus:custom-border-secondary-light-1 focus:custom-input-stlyes"
                         placeholder="Enter Email Address..."
                         {...field}
                       />
@@ -173,7 +173,7 @@ const Login = () => {
                 name="password"
                 disabled ={loading}
                 render={({ field }) => (
-                  <FormItem className="mt-6 mx-8 space-y-0 custom-text-grey600 focus-within:custom-text-secondary-light-1">
+                  <FormItem className="mt-6 mx-8 space-y-0 text-customGrey600 focus-within:text-customSecondaryLight1">
                     <div className="flex">
                       <FormLabel
                         className="px-1 custom-n2 flex-1"
@@ -183,7 +183,7 @@ const Login = () => {
                       </FormLabel>
                       <Link
                         href="/forgotpassword"
-                        className="flex-2 custom-caption custom-text-primary "
+                        className="flex-2 custom-caption text-customPrimary "
                       >
                         Forgot Password?
                       </Link>
@@ -194,7 +194,7 @@ const Login = () => {
                           id="password"
                           disabled={loading}
                           placeholder="Password"
-                          className=" custom-bg-grey100 custom-text-grey800 custom-b1 custom-input-stlyes focus:custom-border-secondary-light-1 focus:custom-input-stlyes"
+                          className=" bg-customGrey100 text-customGrey800 custom-b1 custom-input-stlyes focus:custom-border-secondary-light-1 focus:custom-input-stlyes"
                           type={showPassword ? "text" : "password"}
                           {...field}
                         />
@@ -204,9 +204,9 @@ const Login = () => {
                           onClick={handleTogglePassword}
                         >
                           {!showPassword ? (
-                            <EyeIcon className="h-6 w-6 custom-text-grey600" />
+                            <EyeIcon className="h-6 w-6 text-customGrey600" />
                           ) : (
-                            <EyeOff className="h-6 w-6 custom-text-grey600" />
+                            <EyeOff className="h-6 w-6 text-customGrey600" />
                           )}
                         </button>
                       </div>
@@ -234,7 +234,7 @@ const Login = () => {
               /> */}
               <Button
                 disabled={loading}
-                className="custom-b1 self-center w-10/12 mt-16 mb-8 custom-bg-primary text-white disabled:custom-bg-grey200 hover:custom-bg-secondary"
+                className="custom-b1 self-center w-10/12 mt-16 mb-8 bg-customPrimary text-white disabled:bg-customGrey200 hover:bg-customSecondary"
                 type="submit"
               >
                 Login

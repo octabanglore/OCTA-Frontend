@@ -51,14 +51,14 @@ export default function Sidebar() {
         //! left side bar
       }
       <div
-        className={`custom-bg-secondary transition-all duration-300 overflow-y-auto flex flex-col justify-between
+        className={`bg-customSecondary transition-all duration-300 overflow-y-auto flex flex-col justify-between
         ${isLeftOpen ? "w-[200px]" : "w-[72px]"}`}
         onTransitionEnd={handleTransitionEnd}
       >
         <div>
           <div className="flex">
             <div
-              className={`custom-text-primary custom-bg-grey000  h-9 my-6 mx-3 flex place-items-center justify-center rounded-[8px] ${
+              className={`text-customPrimary bg-customGrey000  h-9 my-6 mx-3 flex place-items-center justify-center rounded-[8px] ${
                 isLeftOpen ? "w-[122px]" : "w-12"
               }`}
             >
@@ -76,7 +76,7 @@ export default function Sidebar() {
             )}
           </div>
           {!isLeftOpen ? (
-            <div className="h-6 flex place-items-center justify-center custom-text-grey000  ">
+            <div className="h-6 flex place-items-center justify-center text-customGrey000  ">
               <button
                 className="flex place-items-center justify-center"
                 onClick={handleLeftOpenClick}
@@ -88,12 +88,12 @@ export default function Sidebar() {
           ) : (
             <Separator />
           )}
-          <div className="custom-text-grey000 flex flex-col place-items-center justify-around py-6 space-y-4">
+          <div className="text-customGrey000 flex flex-col place-items-center justify-around py-6 space-y-4">
             {moduleData.vendorDetails && (
               <button
                 onClick={() => router.push("/vendordetails")}
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
-                  urlTextArray[1] === "vendordetails" && "custom-bg-primary "
+                  urlTextArray[1] === "vendordetails" && "bg-customPrimary "
                 } ${
                   isLeftOpen &&
                   isTransitionEnded &&
@@ -112,7 +112,7 @@ export default function Sidebar() {
               <button
                 onClick={() => router.push("/productcatalogue")}
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
-                  urlTextArray[1] === "productcatalogue" && "custom-bg-primary "
+                  urlTextArray[1] === "productcatalogue" && "bg-customPrimary "
                 } ${
                   isLeftOpen &&
                   isTransitionEnded &&
@@ -131,7 +131,7 @@ export default function Sidebar() {
               <button
                 onClick={() => router.push("/purchaseorder/overview")}
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
-                  urlTextArray[1] === "purchaseorder" && "custom-bg-primary "
+                  urlTextArray[1] === "purchaseorder" && "bg-customPrimary "
                 } ${
                   isLeftOpen &&
                   isTransitionEnded &&
@@ -150,7 +150,7 @@ export default function Sidebar() {
               <button
                 onClick={() => router.push("/insights")}
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
-                  urlTextArray[1] === "insights" && "custom-bg-primary "
+                  urlTextArray[1] === "insights" && "bg-customPrimary "
                 } ${
                   isLeftOpen &&
                   isTransitionEnded &&
@@ -167,7 +167,7 @@ export default function Sidebar() {
               <button
                 onClick={() => router.push("/inventorymanage")}
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
-                  urlTextArray[1] === "inventorymanage" && "custom-bg-primary "
+                  urlTextArray[1] === "inventorymanage" && "bg-customPrimary "
                 } ${
                   isLeftOpen &&
                   isTransitionEnded &&
@@ -186,7 +186,7 @@ export default function Sidebar() {
               <button
                 onClick={() => router.push("/approvals")}
                 className={`flex place-items-center justify-center  p-2 rounded-full ${
-                  urlTextArray[1] === "approvals" && "custom-bg-primary "
+                  urlTextArray[1] === "approvals" && "bg-customPrimary "
                 } ${
                   isLeftOpen &&
                   isTransitionEnded &&
@@ -215,16 +215,16 @@ export default function Sidebar() {
       }
 
       <div
-        className={` custom-bg-grey100 custom-border-r-grey200 border-[1px] relative transition-all duration-500 ml-auto
+        className={` bg-customGrey100 border-r-customGrey200 border-[1px] relative transition-all duration-500 ml-auto
         ${isRightOpen ? "w-[228px]" : "w-[40px]"}`}
       >
         {!isRightOpen && (
           <div className="absolute inset-y-0 right-1/2 ml-px">
-            <div className="custom-bg-primary h-full w-px relative">
-              <div className="custom-bg-grey100 absolute top-1/2 -translate-y-1/2 p-[18px] -translate-x-1/2">
-                <div className="custom-bg-primary rounded-full custom-text-grey000  absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-6 w-6">
+            <div className="bg-customPrimary h-full w-px relative">
+              <div className="bg-customGrey100 absolute top-1/2 -translate-y-1/2 p-[18px] -translate-x-1/2">
+                <div className="bg-customPrimary rounded-full text-customGrey000  absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-6 w-6">
                   <button
-                    className="hover:custom-bg-secondary rounded-full"
+                    className="hover:bg-customSecondary rounded-full"
                     onClick={() => setIsRightOpen(!isRightOpen)}
                   >
                     <ChevronRight />
@@ -236,20 +236,20 @@ export default function Sidebar() {
         )}
         {isRightOpen && (
           <div className=" flex flex-col ">
-            <div className="custom-bg-grey200 self-end rounded-full custom-text-grey800 mt-5 mr-4 h-6 w-6">
+            <div className="bg-customGrey200 self-end rounded-full text-customGrey800 mt-5 mr-4 h-6 w-6">
               <button
-                className="hover:custom-bg-grey100 rounded-full"
+                className="hover:bg-customGrey100 rounded-full"
                 onClick={() => setIsRightOpen(!isRightOpen)}
               >
                 <ChevronLeft />
               </button>
             </div>
             <div className="mt-[42px] ml-8">
-              <div className="custom-text-primary-light-1 custom-h6">
+              <div className="text-customPrimary-light-1 custom-h6">
                 {rightSidebarData.micon}
                 {rightSidebarData.moduleName}
               </div>
-              <div className="mt-8 custom-b2 pl-4 custom-text-grey800">
+              <div className="mt-8 custom-b2 pl-4 text-customGrey800">
                 <div>Overview</div>
                 {rightSidebarData.groups.map((group) => (
                   <Accordion type="single" collapsible key={group.groupid}>
@@ -262,7 +262,7 @@ export default function Sidebar() {
                       </AccordionTrigger>
                       {group.reports.map((report) => (
                         <AccordionContent
-                          className="pt-4 pb-0 custom-b2 custom-text-grey600 flex items-center"
+                          className="pt-4 pb-0 custom-b2 text-customGrey600 flex items-center"
                           key={report.reportId}
                         >
                           {/* {report.reportId === "23" && (

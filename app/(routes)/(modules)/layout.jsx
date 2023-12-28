@@ -5,7 +5,7 @@ const Overview = ({ children }) => {
   return (
     <div className="flex">
       <Sidebar />
-      <div className=" flex flex-col h- w-full custom-bg-grey100">
+      <div className=" flex flex-col h- w-full bg-customGrey100">
         <MainNav />
         <div className="ml-[116px] mb-1 flex-1">
         {children}

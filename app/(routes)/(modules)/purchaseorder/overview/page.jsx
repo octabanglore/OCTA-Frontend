@@ -38,7 +38,7 @@ const Overview = () => {
   }, [users.user]);
   return (
     <>
-      <div className="w-full h-[360px] custom-bg-grey000 custom-text-grey800 flex flex-col mb-1">
+      <div className="w-full h-[360px] bg-customGrey000 text-customGrey800 flex flex-col mb-1">
         <div className="m-6 flex custom-s2 space-x-2">
           {" "}
           <div>{Icons["viewPOIcon"]}</div>
@@ -48,12 +48,12 @@ const Overview = () => {
        {cardsData.groups && <div className={`mt-2 ml-14 h-[256px]  flex justify-start`}>
           {cardsData.groups.map((group) => (
             <Card
-              className="w-[232px] custom-border-grey200 ml-16"
+              className="w-[232px] border-customGrey200 ml-16"
               key={group.groupid}
             >
               <CardHeader className="py-6 w-full pr-0 pl-4">
-                <CardTitle className="custom-s1 custom-text-primary flex items-center space-x-2">
-                  <div className="w-10 h-10 flex justify-center items-center custom-bg-grey100">
+                <CardTitle className="custom-s1 text-customPrimary flex items-center space-x-2">
+                  <div className="w-10 h-10 flex justify-center items-center bg-customGrey100">
                     {Icons[group.groupIcon]}
                   </div>
                   <div>{group.groupName}</div>
@@ -62,11 +62,11 @@ const Overview = () => {
               {group.reports.map((report) => (
                 <CardContent
                   key={report.reportId}
-                  className="custom-caption custom-text-grey600  pb-4"
+                  className="custom-caption text-customGrey600  pb-4"
                 >
                   <Link
                     href={`/purchaseorder/${report.reportId}`}
-                    className="flex space-x-[6px] hover:custom-text-grey800 transition-transform transform hover:scale-105 hover:underline"
+                    className="flex space-x-[6px] hover:text-customGrey800 transition-transform transform hover:scale-105 hover:underline"
                   >
                     <div>{Icons[report.reportIcon]}</div>
                     <p>{report.reportName}</p>
@@ -77,7 +77,7 @@ const Overview = () => {
           ))}
         </div>}
       </div>
-      {/* <div className="w-full h-[360px] custom-bg-grey000 custom-text-grey800 flex flex-col">
+      {/* <div className="w-full h-[360px] bg-customGrey000 text-customGrey800 flex flex-col">
         <div className="m-6 flex custom-s2 space-x-2">
           {" "}
           <div>{Icons["viewPOIcon"]}</div>

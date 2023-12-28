@@ -131,7 +131,7 @@ const ResetPassword = () => {
       {!submitted ? (
         <CardContent>
           <CardHeader className="flex flex-col items-center">
-            <CardTitle className="m-2 custom-s1 custom-text-grey800 text-center">
+            <CardTitle className="m-2 custom-s1 text-customGrey800 text-center">
               Reset your Password
             </CardTitle>
           </CardHeader>
@@ -145,7 +145,7 @@ const ResetPassword = () => {
                   control={form.control}
                   name="password"
                   render={({ field }) => (
-                    <FormItem className=" mx-8 space-y-0 custom-text-grey600 focus-within:custom-text-secondary-light-1">
+                    <FormItem className=" mx-8 space-y-0 text-customGrey600 focus-within:text-customSecondaryLight1">
                       <div className="flex">
                         <FormLabel
                           className="px-1 custom-n2 flex-1"
@@ -164,7 +164,7 @@ const ResetPassword = () => {
                             id="password"
                             disabled={loading}
                             placeholder="Enter new password"
-                            className=" custom-bg-grey100 custom-text-grey800 custom-b1 custom-input-stlyes focus:custom-border-secondary-light-1 focus:custom-input-stlyes"
+                            className=" bg-customGrey100 text-customGrey800 custom-b1 custom-input-stlyes focus:custom-border-secondary-light-1 focus:custom-input-stlyes"
                             type={showPassword ? "text" : "password"}
                             {...field}
                           />
@@ -174,9 +174,9 @@ const ResetPassword = () => {
                             onClick={handleTogglePassword}
                           >
                             {!showPassword ? (
-                              <EyeIcon className="h-6 w-6 custom-text-grey600" />
+                              <EyeIcon className="h-6 w-6 text-customGrey600" />
                             ) : (
-                              <EyeOff className="h-6 w-6 custom-text-grey600" />
+                              <EyeOff className="h-6 w-6 text-customGrey600" />
                             )}
                           </button>
                         </div>
@@ -186,14 +186,14 @@ const ResetPassword = () => {
                           <li
                             className={` ${
                               password1Validations.length || password1 === ""
-                                ? "custom-text-grey600"
-                                : "custom-text-system-red"
+                                ? "text-customGrey600"
+                                : "text-systemRed"
                             } flex flex-row pt-2 space-x-1`}
                           >
                             {password1Validations.length && symbolChanged ? (
                               <Check
                                 height={16}
-                                className="custom-text-system-green"
+                                className="text-systemGreen"
                               />
                             ) : (
                               <AlertCircle
@@ -210,8 +210,8 @@ const ResetPassword = () => {
                                 (password1Validations.lowercase &&
                                   password1Validations.uppercase) ||
                                 password1 === ""
-                                  ? "custom-text-grey600"
-                                  : "custom-text-system-red"
+                                  ? "text-customGrey600"
+                                  : "text-systemRed"
                               } flex flex-row pt-1 space-x-1`}
                             >
                               {password1Validations.lowercase &&
@@ -219,7 +219,7 @@ const ResetPassword = () => {
                               symbolChanged ? (
                                 <Check
                                   height={16}
-                                  className="custom-text-system-green"
+                                  className="text-systemGreen"
                                 />
                               ) : (
                                 <AlertCircle
@@ -234,14 +234,14 @@ const ResetPassword = () => {
                             <li
                               className={` ${
                                 password1Validations.number || password1 === ""
-                                  ? "custom-text-grey600"
-                                  : "custom-text-system-red"
+                                  ? "text-customGrey600"
+                                  : "text-systemRed"
                               } flex flex-row pt-1 space-x-1`}
                             >
                               {password1Validations.number && symbolChanged ? (
                                 <Check
                                   height={16}
-                                  className="custom-text-system-green"
+                                  className="text-systemGreen"
                                 />
                               ) : (
                                 <AlertCircle
@@ -257,15 +257,15 @@ const ResetPassword = () => {
                               className={` ${
                                 password1Validations.specialChar ||
                                 password1 === ""
-                                  ? "custom-text-grey600"
-                                  : "custom-text-system-red"
+                                  ? "text-customGrey600"
+                                  : "text-systemRed"
                               } flex flex-row pt-1 space-x-1`}
                             >
                               {password1Validations.specialChar &&
                               symbolChanged ? (
                                 <Check
                                   height={16}
-                                  className="custom-text-system-green"
+                                  className="text-systemGreen"
                                 />
                               ) : (
                                 <AlertCircle
@@ -285,7 +285,7 @@ const ResetPassword = () => {
                   control={form.control}
                   name="confirmPassword"
                   render={({ field }) => (
-                    <FormItem className="mt-8 mx-8 space-y-0 custom-text-grey600 focus-within:custom-text-secondary-light-1">
+                    <FormItem className="mt-8 mx-8 space-y-0 text-customGrey600 focus-within:text-customSecondaryLight1">
                       <div className="flex">
                         <FormLabel
                           className="px-1 custom-n2 flex-1"
@@ -304,7 +304,7 @@ const ResetPassword = () => {
                             id="confirmPassword"
                             disabled={loading}
                             placeholder="Comfirm new password"
-                            className=" custom-bg-grey100 custom-text-grey800 custom-b1 custom-input-stlyes focus:custom-border-secondary-light-1 focus:custom-input-stlyes"
+                            className=" bg-customGrey100 text-customGrey800 custom-b1 custom-input-stlyes focus:custom-border-secondary-light-1 focus:custom-input-stlyes"
                             type={showconfirmPassword ? "text" : "password"}
                             {...field}
                           />
@@ -314,16 +314,16 @@ const ResetPassword = () => {
                             onClick={handleToggleconfirmPassword}
                           >
                             {!showconfirmPassword ? (
-                              <EyeIcon className="h-6 w-6 custom-text-grey600" />
+                              <EyeIcon className="h-6 w-6 text-customGrey600" />
                             ) : (
-                              <EyeOff className="h-6 w-6 custom-text-grey600" />
+                              <EyeOff className="h-6 w-6 text-customGrey600" />
                             )}
                           </button>
                         </div>
                       </FormControl>
                       {passwordsNotMatch && (
                         <div
-                          className={` ${"custom-text-system-red"} flex flex-row pt-2 px-1 custom-caption space-x-1`}
+                          className={` ${"text-systemRed"} flex flex-row pt-2 px-1 custom-caption space-x-1`}
                         >
                           <AlertCircle height={16} className="rotate-180 " />
                           Password is not matching
@@ -334,7 +334,7 @@ const ResetPassword = () => {
                 />
                 <Button
                   disabled={loading || isSubmitDisabled}
-                  className={`custom-b1 self-center w-10/12 mt-16 mb-8 custom-bg-primary disabled:custom-bg-grey200 disabled:opacity-100 text-white hover:custom-bg-secondary`}
+                  className={`custom-b1 self-center w-10/12 mt-16 mb-8 bg-customPrimary disabled:bg-customGrey200 disabled:opacity-100 text-white hover:bg-customSecondary`}
                   type="submit"
                 >
                   Login

@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 const HomePage = ({ children }) => {
   
   return (
-    <div className=" flex flex-col h-screen custom-bg-grey100">
+    <div className=" flex flex-col h-screen bg-customGrey100">
       <Navbar navbarData={topbarData} />
       {children}
     </div>
