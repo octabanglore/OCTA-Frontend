@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${kanit.variable} ${kanit.className} ${nunito_sans.variable} custom-bg-grey100 custom-text-grey800`}
+        className={`${kanit.variable} ${kanit.className} ${nunito_sans.variable} bg-customGrey100 text-customGrey800`}
       >
         <ToastProvider />
         <Toaster/>

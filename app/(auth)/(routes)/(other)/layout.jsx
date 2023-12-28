@@ -3,9 +3,9 @@ import React, { Children } from "react";
 
 const OtherLoginScreensLayout = ({ children }) => {
   return (
-    <div className=" flex flex-col  h-screen custom-bg-grey000">
-      <div className="custom-bg-secondary w-full h-16 self-start">
-        <div className="custom-bg-grey000 h-8 w-[122px] m-[16px_48px] rounded-lg custom-bg-primary relative">
+    <div className=" flex flex-col  h-screen bg-customGrey000">
+      <div className="bg-customSecondary w-full h-16 self-start">
+        <div className="bg-customGrey000 h-8 w-[122px] m-[16px_48px] rounded-lg bg-customPrimary relative">
           <Link href="/" className="absolute inset-0 flex items-center justify-center">
             OCTA
           </Link>

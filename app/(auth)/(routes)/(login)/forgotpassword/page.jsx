@@ -59,10 +59,10 @@ const ForgotPassword = () => {
       {!submitted ? (
         <>
           <CardHeader className="flex flex-col items-center">
-            <CardTitle className="mt-2 mb-6 custom-s1 custom-text-grey800 text-center">
+            <CardTitle className="mt-2 mb-6 custom-s1 text-customGrey800 text-center">
               Forgot your Password
             </CardTitle>
-            <CardDescription className="custom-b1 custom-text-grey600 text-center">
+            <CardDescription className="custom-b1 text-customGrey600 text-center">
               Please confirm the registered email address to send the password
               reset link.
             </CardDescription>
@@ -79,14 +79,14 @@ const ForgotPassword = () => {
                     name="username"
                     disabled={loading}
                     render={({ field }) => (
-                      <FormItem className="mt-2 mx-8 space-y-0 custom-text-grey600 focus-within:custom-text-secondary-light-1">
+                      <FormItem className="mt-2 mx-8 space-y-0 text-customGrey600 focus-within:text-customSecondaryLight1">
                         <FormLabel className="px-1 custom-n2" htmlFor="username">
                           Email
                         </FormLabel>
                         <FormControl>
                           <Input
                             id="username"
-                            className="custom-bg-grey100 custom-text-grey800 custom-b1 custom-input-stlyes focus:custom-border-secondary-light-1 focus:custom-input-stlyes"
+                            className="bg-customGrey100 text-customGrey800 custom-b1 custom-input-stlyes focus:custom-border-secondary-light-1 focus:custom-input-stlyes"
                             // placeholder="Enter Email Address..."
                             {...field}
                           />
@@ -97,14 +97,14 @@ const ForgotPassword = () => {
                   />
                   <Button
                     disabled={loading}
-                    className="custom-b1 self-center w-10/12 mt-12 custom-bg-primary text-white disabled:custom-bg-grey200  hover:custom-bg-secondary"
+                    className="custom-b1 self-center w-10/12 mt-12 bg-customPrimary text-white disabled:bg-customGrey200  hover:bg-customSecondary"
                     type="submit"
                   >
                     Request reset link
                   </Button>
                   <Link
                     href="/login"
-                    className="self-center mt-[18px] mb-[34px] custom-b1 custom-text-primary-light-1 "
+                    className="self-center mt-[18px] mb-[34px] custom-b1 text-customPrimaryLight1 "
                   >
                     Back to login
                   </Link>

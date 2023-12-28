@@ -65,6 +65,9 @@
     --ring: 212.7 26.8% 83.9%;
   }
 }
+.rdp-vhidden {
+  @apply hidden;
+}
 
 @layer base {
   * {
@@ -133,83 +136,13 @@
   .custom-overline {
     @apply font-nunito font-normal text-[11px] leading-[15px] tracking-[1.5px]  !important;
   }
-
-  .custom-bg-primary {
-    @apply bg-[#0A68A8] !important;
-  }
-  .custom-bg-secondary {
-    @apply bg-[#29335C] !important;
-  }
-  .custom-bg-secondary-LIGHT-1 {
-    @apply bg-[#6973D0] !important;
-  }
-  .custom-bg-system-red {
-    @apply bg-[#CC2936] !important;
-  }
-  .custom-bg-system-green {
-    @apply bg-[#109648] !important;
-  }
-  .custom-bg-grey000 {
-    @apply bg-[#FEFEFF] !important;
-  }
-  .custom-bg-grey100 {
-    @apply bg-[#F3F4F8] !important;
-  }
-  .custom-bg-grey200 {
-    @apply bg-[#D2D4DA] !important;
-  }
-  .custom-bg-grey300 {
-    @apply bg-[#B3B5BD] !important;
-  }
-  .custom-text-grey000 {
-    @apply text-[#FEFEFF] !important;
-  }
-  .custom-text-grey100 {
-    @apply text-[#F3F4F8] !important;
-  }
-  .custom-text-grey800 {
-    @apply text-[#282A3A] !important;
-  }
-  .custom-text-grey600 {
-    @apply text-[#5B5D6B] !important;
-  }
-  .custom-text-primary {
-    @apply text-[#0A68A8] !important;
-  }
-  .custom-text-secondary-light-1 {
-    @apply text-[#6973D0] !important;
-  }
-  .custom-text-primary-light-1 {
-    @apply text-[#4E9FD7] !important;
-  }
-  .custom-text-system-red {
-    @apply text-[#CC2936] !important;
-  }
-  .custom-text-system-green {
-    @apply text-[#109648] !important;
-  }
   .custom-border-secondary-light-1 {
-    @apply border-[#6973D0] rounded-[8px] border-[1px] bg-transparent !important;
+    @apply border-customSecondaryLight1 rounded-[8px] border-[1px] bg-transparent !important;
   }
-  .custom-border-primary {
-    @apply border-[#0A68A8] !important;
-  }
-  .custom-border-grey600 {
-    @apply border-[#5B5D6B] !important;
-  }
-  .custom-border-grey200 {
-    @apply border-[#D2D4DA] !important;
-  }
-  .custom-border-r-grey200 {
-    @apply border-r-[#D2D4DA] !important;
-  }
-  .custom-border-b-grey200 {
-    @apply border-b-[#D2D4DA] !important;
-  }
-  .custom-input-stlyes {
+   .custom-input-stlyes {
     @apply rounded-[8px] gap-[10px] py-[10px] pr-[12px] pl-[8px]  !important;
   }
-  /* .ag-theme-quartz .ag-header {
-    @apply bg-[] text-[#] font-bold;
-  } */
+  .force-rounded{
+    @apply rounded-full !important;
+  }
 }

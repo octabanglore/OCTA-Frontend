@@ -5,7 +5,7 @@ import octalogo from "@/app/octalogo.svg";
 
 const LoginLayout = ({ children }) => {
   return (
-    <div className=" flex justify-center items-center h-screen custom-bg-grey100">
+    <div className=" flex justify-center items-center h-screen bg-customGrey100">
       <div className=" mt-[-2rem] w-2/3 mx-4 flex flex-col  justify-center items-center">
         <div className="mb-6 flex justify-center items-center">
           <Image src={octalogo} alt="octalogo" width={56} height={56} />
@@ -14,10 +14,10 @@ const LoginLayout = ({ children }) => {
           </span>
         </div>
         <div className="w-1/2 ">{children}</div>
-        <div className="flex justify-center items-center mt-8 custom-b2 custom-text-grey800">
+        <div className="flex justify-center items-center mt-8 custom-b2 text-customGrey800">
           <label>New to Octa? </label>
           <Link
-            className=" ml-2 text-sm col custom-text-primary custom-b2"
+            className=" ml-2 text-sm col text-customPrimary custom-b2"
             href="register"
           >
             Sign Up!
@@ -26,25 +26,25 @@ const LoginLayout = ({ children }) => {
         <div className="flex justify-center mt-16 w-4/5">
           <ul className="flex space-x-12">
             <li>
-              <Link className="custom-b1 custom-text-grey800" href="about">
+              <Link className="custom-b1 text-customGrey800" href="about">
                 About
               </Link>
             </li>
             <li>
-              <Link className="custom-b1 custom-text-grey800" href="contactus">
+              <Link className="custom-b1 text-customGrey800" href="contactus">
                 Contact Us
               </Link>
             </li>
             <li>
               <Link
-                className="custom-b1 custom-text-grey800"
+                className="custom-b1 text-customGrey800"
                 href="termsconditions"
               >
                 Terms & Conditions
               </Link>
             </li>
             <li>
-              <Link className="custom-b1 custom-text-grey800" href="faqs">
+              <Link className="custom-b1 text-customGrey800" href="faqs">
                 FAQs
               </Link>
             </li>
