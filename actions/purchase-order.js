@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const getCardsData = (user) => {
   const cardData = {
     groups: [
@@ -80,8 +82,43 @@ export const getCardsData = (user) => {
 export const exportFileApi = (type, reportId, user) => {
   console.log(type, reportId, user);
 };
-export const downloadFileApi = (type, selectedRows, user) => {
-  console.log(type, selectedRows, user);
+export const downloadFileApi = async (type, selectedRows, user) => {
+
+  const dataToSend = {
+    'selectedValues':selectedRows
+  };
+
+  let formdata = JSON.stringify(dataToSend);
+
+try {
+  //http://localhost:8080/api/v1 
+  const response = await axios.post('http://localhost:8080/api/v1/bcmreports/'+type, formdata, { 
+    headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials':true  // Add this line
+    }
+  });
+
+  const blob = new Blob([response.data], { type: response.headers['content-type'] });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'downloaded_file.'+type;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  URL.revokeObjectURL(url);
+} catch (error) {
+  if (axios.isAxiosError(error)) {
+      console.error('Axios Error:', error.response?.data || error.message);
+  } else {
+      console.error('Error:', error.message);
+  }
+}
+  //console.log(type, selectedRows, user);
 };
 
 
