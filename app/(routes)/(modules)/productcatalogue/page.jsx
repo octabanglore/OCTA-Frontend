@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { Calendar2 } from "@/components/ui/calendar2";
 import { CalendarIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,51 +15,51 @@ const F1 = () => {
     console.log(date);
   }, [date]);
   return (
-    <div className=" m-4 bg-white p-8">
+    <div className="bg-customGrey000 p-8">
       <Tabs
         defaultValue="account"
         className="w-[] bg-transparent to-transparent"
       >
         <TabsList className="bg-transparent space-x-6">
-          <TabsTrigger value="account" className="bg-transparent p-0 w-[152px] h-[38px] ">
-            {/* <Button
-              variant={"outline"}
-              className={cn(
-                "w-full justify-start text-left font-normal ",
-                !date && "text-muted-foreground"
-              )}
-            >
-              <CalendarIcon className="mr-2 h-4 w-4" />
-              {date ? format(date, "PPP") : <span>Pick a date</span>}
-            </Button> */}
-            <div className="relative w-full h-full">
-              {/* <label
-                for="first"
-                className="absolute z-[1] bg-[white] px-[5px]  left-[1em] top-[-1.4ex]"
+          <TabsTrigger
+            value="account"
+            className="bg-transparent p-0 w-[152px] h-[38px] border-[1px] flex flex-col data-[state=active]:border-customPrimaryLight2  data-[state=active]:text-customPrimaryLight3"
+          >
+            <div className="w-full h-full relative rounded-sm">
+              <p className="absolute top-[-9px] bg-customGrey000 p-0.5 text-[10px] font-normal leading-[12px] ml-2 self-start">
+                From Date
+              </p>
+              <div
+                variant={"outline"}
+                className={cn(
+                  "w-full flex h-full justify-between text-[12px] font-normal px-2 leading-[11px] items-center",
+                  !date && "text-muted-foreground"
+                )}
               >
-                First
-              </label> */}
-              <input
-                type="text"
-                className="border relative w-full h-full rounded-md border-solid border-[gray]"
-                value={date}
-              />
+                {date ? format(date, "dd/MM/yyyy") : <span>Pick a date</span>}
+                <CalendarIcon className="ml-4 self-right h-4 w-4" />
+              </div>
             </div>
           </TabsTrigger>
           <TabsTrigger
             value="password"
-            className="bg-transparent p-0 w-[152px] h-[38px] border-[1px] data-[state=active]:border-customPrimaryLight2 "
+            className="bg-transparent p-0 w-[152px] h-[42px] border-[1px] flex flex-col data-[state=active]:border-customPrimaryLight2  data-[state=active]:text-customPrimaryLight3"
           >
+          <div className="w-full h-full relative rounded-sm">
+            <p className="absolute top-[-9px] bg-customGrey000 p-0.5 text-[10px] font-normal leading-[12px] ml-2 self-start">
+              To Date
+            </p>
             <div
               variant={"outline"}
               className={cn(
-                "w-full flex h-full justify-between items-center px-3 custom-overline ",
+                "w-full flex h-full justify-between text-[12px] font-normal px-2 leading-[11px] items-center",
                 !date1 && "text-muted-foreground"
               )}
             >
               {date1 ? format(date1, "PP") : <span>Pick a date</span>}
               <CalendarIcon className="ml-4 self-right h-4 w-4" />
             </div>
+          </div>
           </TabsTrigger>
         </TabsList>
         <TabsContent value="account">
@@ -73,6 +72,7 @@ const F1 = () => {
               fromYear={1960}
               toYear={2050}
               defaultMonth={date && date}
+              maxDate={new Date(2023, 11, 31)}
             />
           </div>
         </TabsContent>

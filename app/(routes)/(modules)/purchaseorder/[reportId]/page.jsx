@@ -88,7 +88,7 @@ const AgGridComponent = ({ params }) => {
   }
   const hanldeExportFile = async (type) => {
     try {
-      await exportFileApi(type, params.reportId, users.user);
+      exportFileApi(type, params.reportId, users.user);
       console.log(selectedRows.length);
     } catch (error) {
       console.log(error.response.data.errorMessage);

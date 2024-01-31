@@ -12,7 +12,7 @@ import Link from "next/link";
 const CardComp = (props) => {
   return (
     <div>
-      <Card className="w-[300px] h-[260px] rounded-[10px] border-customGrey200 bg-customGrey000">
+      <Card className="w-[320px]  rounded-[10px] border-customGrey200 bg-customGrey000">
         <CardHeader className="p-[32px_36px_32px_36px]">
           <CardTitle className="flex flex-row custom-s1 text-customGrey800">
             <div className="mr-4 flex items-center">{props.icon}</div> {props.text.title}

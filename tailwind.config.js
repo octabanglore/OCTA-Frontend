@@ -57,6 +57,7 @@ module.exports = {
         customPrimary:'#0A68A8',
         customPrimaryLight1:'#4E9FD7',
         customPrimaryLight2:'#179CF7',
+        customPrimaryLight3:'#0A68A8',
         customSecondary:'#29335C',
         customSecondaryLight1:'#6973D0',
         systemRed:'#CC2936',
