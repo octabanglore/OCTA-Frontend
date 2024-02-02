@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getCardsData = (user) => {
+export const getCardsData123 = (user) => {
   const cardData = {
     groups: [
       {
@@ -122,20 +122,18 @@ try {
 };
 
 
- //! for ref
-// const auth = async (data) => {
-// var customConfig = {
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// };
-
-//   let formdata = JSON.stringify(data);
-//   const response = await axios.post(
-//     "http://localhost:8080/api/v1/authenticate/authenticateuser",
-//     formdata,
-//     customConfig
-//   );
-
-//   return response;
-// };
+export const getCardsData = async(user)=>{
+  debugger;
+  const response = await axios.get(
+    `${process.env.API_BASE_URL}/api/v1/modules/getModulesGroupData/3`,
+    {},
+    {
+      headers: {
+        'Authorization': user.data.access_token ? `Bearer ${user.data.access_token}` : "",
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type':'application/json'
+      },
+    }
+  );
+  return response.data;
+};

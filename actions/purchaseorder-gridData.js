@@ -3,7 +3,7 @@
 import axios from "axios";
 
 
-
+/*
 export const fetchData = (reportId, user)  => {
 
   console.log(reportId, user);
@@ -2087,20 +2087,22 @@ export const fetchData = (reportId, user)  => {
   });
 
 };
- //! for ref
-// const auth = async (data) => {
-// var customConfig = {
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// };
+*/
 
-//   let formdata = JSON.stringify(data);
-//   const response = await axios.post(
-//     "http://localhost:8080/api/v1/authenticate/authenticateuser",
-//     formdata,
-//     customConfig
-//   );
-
-//   return response;
-// };
+ export const fetchData = async(reportId, user)=>{
+  const response = await axios.post(
+    `${process.env.API_BASE_URL}/api/v1/reportData/`+reportId,
+    {
+      "email":"bala@gmail.com",
+      "password":"octaadmin2"
+      },
+    {
+      headers: {
+        'Authorization': user.data.access_token ? `Bearer ${user.data.access_token}` : "",
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type':'application/json'
+      },
+    }
+  );
+  return response.data;
+};

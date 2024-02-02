@@ -74,3 +74,20 @@ export const moduleData = {
     buttonText: "Inspect",
   },
 };
+
+
+export const getModuleData123 = async(user)=>{
+  debugger;
+  const response = await axios.get(
+    `${process.env.API_BASE_URL}/api/v1/modules/getModulesData`,
+    {},
+    {
+      headers: {
+        'Authorization': user.data.access_token ? `Bearer ${user.data.access_token}` : "",
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type':'application/json'
+      },
+    }
+  );
+  return response.data;
+};
