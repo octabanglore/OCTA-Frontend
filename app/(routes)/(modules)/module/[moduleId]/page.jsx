@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import useLogin from "@/hooks/use-auth";
 import { Kpi } from "@/components/svgs/Demo";
 
-const Overview = () => {
+const Overview = ({ params }) => {
   const [cardsData, setCardsData] = useState({});
   const users = useLogin();
   const [isMounted, setIsMounted] = useState(false);
@@ -27,7 +27,7 @@ const Overview = () => {
   useEffect(() => {
     const getDatafunc = async () => {
       try {
-        const resp = await getCardsData(users.user);
+        const resp = await getCardsData(params.moduleId, users.user,id);
         setCardsData(resp);
       } catch (error) {
         console.log(error.response.data.errorMessage);
@@ -35,7 +35,7 @@ const Overview = () => {
       }
     };
     getDatafunc();
-  }, [users.user]);
+  }, [params.moduleId, users.user]);
   return (
     <>
       <div className="w-full h-[360px] bg-customGrey000 text-customGrey800 flex flex-col mb-1">

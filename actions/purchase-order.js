@@ -122,10 +122,10 @@ try {
 };
 
 
-export const getCardsData = async(user)=>{
+export const getCardsData = async(moduleId,user)=>{
   debugger;
   const response = await axios.get(
-    `${process.env.API_BASE_URL}/api/v1/modules/getModulesGroupData/3`,
+    `${process.env.API_BASE_URL}/api/v1/modules/getModulesGroupData/${moduleId}`,
     {},
     {
       headers: {
