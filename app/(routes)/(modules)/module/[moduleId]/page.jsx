@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getCardsData } from "../../../../../actions/purchase-order";
+import { getCardsData,getCardsData123 } from "../../../../../actions/purchase-order";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import useLogin from "@/hooks/use-auth";
@@ -27,10 +27,10 @@ const Overview = ({ params }) => {
   useEffect(() => {
     const getDatafunc = async () => {
       try {
-        const resp = await getCardsData(params.moduleId, users.user,id);
+        const resp = await getCardsData(users.user , params.moduleId);
         setCardsData(resp);
       } catch (error) {
-        console.log(error.response.data.errorMessage);
+        console.log(error);
         // console.error('Error during login:',error.response.data.errorMessage);
       }
     };

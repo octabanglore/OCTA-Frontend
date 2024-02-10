@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getCardsData123 = (user) => {
+export const getCardsData123 = (user,id) => {
   const cardData = {
     groups: [
       {
@@ -92,7 +92,7 @@ export const downloadFileApi = async (type, selectedRows, user) => {
 
 try {
   //http://localhost:8080/api/v1 
-  const response = await axios.post('http://localhost:8080/api/v1/bcmreports/'+type, formdata, { 
+  const response = await axios.post('http://34.227.132.94:8080/api/v1/bcmreports/'+type, formdata, { 
     headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -122,10 +122,9 @@ try {
 };
 
 
-export const getCardsData = async(moduleId,user)=>{
-  debugger;
+export const getCardsData = async(user,id)=>{
   const response = await axios.get(
-    `${process.env.API_BASE_URL}/api/v1/modules/getModulesGroupData/${moduleId}`,
+    `${process.env.API_BASE_URL}/api/v1/modules/getModulesGroupData/3`,
     {},
     {
       headers: {

@@ -2090,6 +2090,7 @@ export const fetchData = (reportId, user)  => {
 */
 
  export const fetchData = async(reportId, user)=>{
+  debugger;
   const response = await axios.post(
     `${process.env.API_BASE_URL}/api/v1/reportData/`+reportId,
     {
