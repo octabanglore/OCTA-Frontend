@@ -65,7 +65,7 @@ const Overview = ({ params }) => {
                   className="custom-caption text-customGrey600  pb-4"
                 >
                   <Link
-                    href={`/purchaseorder/${report.reportId}`}
+                    href={`/reportdata/${report.reportId}`}
                     className="flex space-x-[6px] hover:text-customGrey800 transition-transform transform hover:scale-105 hover:underline"
                   >
                     <div>{Icons[report.reportIcon]}</div>
